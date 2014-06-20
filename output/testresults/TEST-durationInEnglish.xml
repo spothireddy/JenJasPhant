@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+
+  <testsuite name="durationInEnglish" errors="0" tests="2" failures="0" time="0.007" timestamp="2014-06-19T23:43:13.894Z">
+    
+      <testcase assertions="1" classname="durationInEnglish" name="should return &quot;now&quot; when durations is 0" time="0.005">
+        
+      </testcase>
+    
+      <testcase assertions="1" classname="durationInEnglish" name="should return &quot;x seconds ago&quot; when ...." time="0.001">
+        
+      </testcase>
+    
+  </testsuite>
+
+</testsuites>
