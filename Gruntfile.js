@@ -22,6 +22,12 @@ module.exports = function(grunt) {
           		options: {
           			dir: 'reports/coverage/lcov'
           		}
+          	},
+          	{
+          		type: 'html',
+          		options: {
+          			dir: 'reports/coverage/html'
+          		}
           	}
           ]
         }

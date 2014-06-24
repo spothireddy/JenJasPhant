@@ -44,7 +44,7 @@ describe("Player", function() {
     player.play(song);
     player.makeFavorite();
 
-    expect(song.persistFavoriteStatus).toHaveBeenCalledWith(false);
+    expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
   });
 
   //demonstrates use of expected exceptions
