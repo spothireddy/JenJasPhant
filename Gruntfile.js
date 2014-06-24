@@ -1,51 +1,49 @@
-module.exports = function (grunt){
-	
+module.exports = function(grunt) {
+  'use strict';
 
-	var gruntConfig = {};
+  // Project configuration.
+  grunt.initConfig({
+    jasmine : {
+      src : 'src/**/*.js',
+      options : {
+        specs : 'spec/**/*.js',
+        template: require('grunt-template-jasmine-istanbul'),
+        templateOptions: {
+        	coverage: 'reports/coverage.json',
+          report: [
+          	{
+          		type: 'cobertura',
+          		options: {
+          			dir: 'reports/coverage/cobertura'
+          		}
+          	},
+          	{
+          		type: 'lcov',
+          		options: {
+          			dir: 'reports/coverage/lcov'
+          		}
+          	}
+          ]
+        }
+      }
+    },
+    jshint: {
+      all: [
+        'Gruntfile.js',
+        'src/**/*.js',
+        'spec/**/*.js'
+      ],
+      options: {
+        jshintrc: '.jshintrc'
+      }
+    }
+  });
 
-	//task definitions
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	gruntConfig.jshint = {
-		all: [
-				'*.js',
-				'src/**/*.js'
-			]
-	};
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
+ 
 
-	grunt.loadNpmTasks('grunt-contrib-jasmine');
-	gruntConfig.jasmine = {
-			src : {
-				src : [
-					'src/js/**/*.js'
-				],
-				options: {
-					specs: 'src/test/**/*.test.js',
-					junit: {
-						path: 'output/testresults'
-					}
-				}
-			}
-	}
+  grunt.registerTask('test', ['jasmine']);
 
-	gruntConfig.jasmine.istanbul = {
-		src: gruntConfig.jasmine.src.src,
-		options: {
-			specs: gruntConfig.jasmine.src.options.specs,
-			template: require('grunt-template-jasmine-istanbul'),
-			templateOptions: {
-				coverage: 'output/coverage/coverage.json',
-					report: [
-						{type: 'html', options: {dir: 'output/coverage'}},
-						{type: 'text-summary'}
-					]
-			}
-		}
-	}
+  grunt.registerTask('default', ['test']);
 
-	//grunt
-	grunt.initConfig(gruntConfig);
-
-	
-	
-	
 };
