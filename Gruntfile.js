@@ -28,6 +28,9 @@ module.exports = function(grunt) {
           		options: {
           			dir: 'reports/coverage/html'
           		}
+          	},
+          	{
+          		type: 'text-summary'
           	}
           ]
         }
